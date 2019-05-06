@@ -10,26 +10,13 @@
 
             okPopup.then(function (res) {
                 console.log("Do the stuff here");
-                if (window.cordova) {
-                    console.error("OK!! window.cordova");
-                    if (window.cordova.plugins) {
-                        console.error("OK!! window.cordova.plugins");
-                        if (window.cordova.plugins.firebase.analytics) {
-                            console.error("OK!! window.cordova.plugins.firebase.analytics");
-                            if (window.cordova.plugins.firebase.analytics) {
-                                console.error("OK!! window.cordova.plugins.firebase.analytics");
-                                window.cordova.plugins.firebase.analytics.logEvent("custom_event", { currView: 'search' });
-                            } else {
-                                console.error("UNDEFINED!! window.cordova.plugins.firebase.analytics");
-                            }
-                        } else {
-                            console.error("UNDEFINED!! window.cordova.plugins.firebase");
-                        }
-                    } else {
-                        console.error("UNDEFINED!! window.cordova.plugins");
-                    }
+                if (window.cordova 
+                    && window.cordova.plugins
+                    && window.cordova.plugins.firebase 
+                    && window.cordova.plugins.firebase.analytics) {
+                        window.cordova.plugins.firebase.analytics.logEvent("custom_event", { currView: 'search' });
                 } else {
-                    console.error("UNDEFINED!! window.cordova");
+                    console.error("UNDEFINED!! window.cordova.plugins.firebase.analytics");
                 }
             });
         };
